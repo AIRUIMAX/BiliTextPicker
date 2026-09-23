@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 16px;
+      margin: 0;
+      color: #00a1d6;
+    }
+    .status {
+      padding: 12px;
+      background: #f5f5f5;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .status.connected {
+      background: #e8f5e8;
+      color: #2e7d32;
+    }
+    .status.error {
+      background: #ffebee;
+      color: #c62828;
+    }
+    .controls {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .language-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .language-select label {
+      color: #666;
+      white-space: nowrap;
+    }
+    .language-select select {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      font-size: 13px;
+      color: #333;
+    }
+    .language-select select:disabled {
+      background: #f5f5f5;
+      color: #999;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #00a1d6;
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+      flex: 1;
+    }
+    button:hover {
+      background: #0088b3;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+    /* 字幕内容区域样式 */
+    .subtitle-container {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      margin-top: 12px;
+      background: #f9f9f9;
+    }
+    .subtitle-content {
+      padding: 12px;
+    }
+    .subtitle-item {
+      margin-bottom: 8px;
+      padding: 8px;
+      background: #fff;
+      border-radius: 4px;
+      border-left: 3px solid #00a1d6;
+      font-size: 13px;
+      color: #333;
+      display: flex;
+      align-items: center;
+    }
+    .subtitle-time {
+      font-size: 11px;
+      color: #666;
+      margin-right: 8px;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>B站字幕获取器</h1>
+  </div>
+  
+  <div id="status" class="status">
+    正在检测B站视频页面...
+  </div>
+  
+  <div class="controls">
+    <button id="refreshSubtitles" disabled>刷新字幕</button>
+    <button id="copySubtitles" disabled>复制字幕</button>
+    <button id="downloadSubtitles" disabled>下载字幕</button>
+  </div>
+
+  <div class="language-select">
+    <label for="subtitleLanguage">字幕语言：</label>
+    <select id="subtitleLanguage" disabled>
+      <option value="-1">正在加载语言列表...</option>
+    </select>
+  </div>
+  
+  <!-- 字幕内容区域 -->
+  <div class="subtitle-container">
+    <div id="subtitleContent" class="subtitle-content">
+      <div class="empty-state">请在B站视频页面使用此扩展</div>
+    </div>
+  </div>
+  
+  <div class="info" id="videoInfo" style="padding-top: 5px;">
+    正在获取视频信息...
+  </div>
+  
+  <div class="info" id="episodeInfo" style="padding-top: 5px; display: none;">
+  </div>
+
+
+  <script src="popup.js"></script>
+</body>
+</html>

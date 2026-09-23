@@ -1,0 +1,26 @@
+# ── 开发源码（不上传公开仓库）────────────────────────────────
+# 公开仓库只发布 dist/ 里的混淆构建产物，源码保留在本地。
+/background.js
+/content.js
+/popup.js
+/popup.html
+/manifest.json
+/assets/
+/DEBUGGING.md
+/test_multiple_pages.html
+/test_subtitles.json
+
+# ── 内部构建与本地工具 ──────────────────────────────────────
+/.build/
+/.workbuddy/
+/.codebuddy/
+/.vscode/
+/.idea/
+
+# ── 依赖与系统文件 ─────────────────────────────────────────
+node_modules/
+*.log
+npm-debug.log*
+Thumbs.db
+Desktop.ini
+.DS_Store

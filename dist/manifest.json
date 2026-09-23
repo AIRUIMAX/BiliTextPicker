@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "B站字幕获取器",
+  "version": "1.0.0",
+  "description": "获取B站视频字幕并在页面上显示悬浮窗",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "cookies",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://api.bilibili.com/*",
+    "https://*.bilibili.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/video/*",
+        "https://www.bilibili.com/bangumi/play/*",
+        "https://m.bilibili.com/video/*",
+        "https://b23.tv/*",
+        "https://live.bilibili.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "B站字幕获取器",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "36": "assets/icon36.png", 
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "36": "assets/icon36.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

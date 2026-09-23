@@ -9,6 +9,8 @@
 
 ![界面预览](docs/images/popup-preview.png)
 
+**[⬇️ 下载最新版](https://github.com/AIRUIMAX/BiliTextPicker/releases/latest)** · 未上架应用商店，需要手动加载，步骤见 [安装](#安装)
+
 ---
 
 ## 这是什么
@@ -43,13 +45,18 @@
 
 ## 安装
 
-1. 下载本仓库（`Code` → `Download ZIP`，或 `git clone`）并解压
-2. 打开 `chrome://extensions/`（Edge 为 `edge://extensions/`）
-3. 打开右上角的 **开发者模式**
-4. 点击 **加载已解压的扩展程序**，选择仓库里的 **`dist`** 文件夹
-5. 打开任意 B 站视频页，点击工具栏里的扩展图标（建议在扩展页固定图标）
+### 方式一：下载 Release（推荐，最省事）
 
-> 未上架应用商店，只能手动加载。
+1. 到 [Releases](https://github.com/AIRUIMAX/BiliTextPicker/releases/latest) 下载 `BiliTextPicker-v1.0.0.zip` 并解压
+2. 打开 `chrome://extensions/`（Edge 为 `edge://extensions/`），打开右上角的 **开发者模式**
+3. 点击 **加载已解压的扩展程序**，选择解压出来的 `BiliTextPicker-v1.0.0` 文件夹
+4. 打开任意 B 站视频页，点击工具栏里的扩展图标（建议在扩展页固定图标）
+
+### 方式二：从仓库加载
+
+下载本仓库（`Code` → `Download ZIP`，或 `git clone`）并解压，第 3 步选择仓库里的 **`dist`** 文件夹。
+
+> ⚠️ 未上架应用商店。Windows 稳定版 Chrome 会拦截非商店来源的 `.crx`，所以**只能通过「开发者模式加载」这一种方式安装**，`.zip` 不能直接拖进浏览器。
 
 ---
 

@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <style>
     body {
-      width: 350px;
+      width: 380px;
+      max-height: 580px;
+      overflow-y: auto;
       padding: 16px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
@@ -87,7 +89,7 @@
     }
     /* 字幕内容区域样式 */
     .subtitle-container {
-      max-height: 300px;
+      max-height: 200px;
       overflow-y: auto;
       border: 1px solid #eee;
       border-radius: 6px;
@@ -119,6 +121,216 @@
       color: #999;
       font-size: 13px;
     }
+
+    /* ===== 合集批量下载 ===== */
+    .collection {
+      border: 1px solid #e3e9ef;
+      border-radius: 8px;
+      background: #fcfdff;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .collection-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      background: #f1f8fd;
+      border-bottom: 1px solid #e3e9ef;
+      cursor: pointer;
+    }
+    .collection-head .head-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+    .collection-head .pod-icon {
+      flex: none;
+      font-size: 11px;
+      color: #fff;
+      background: #00a1d6;
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .collection-head .pod-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0b5f85;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .collection-head .pod-amt {
+      font-size: 11px;
+      color: #7b8a99;
+      white-space: nowrap;
+    }
+    .link-btn {
+      flex: none;
+      width: auto;
+      padding: 2px 6px;
+      background: none;
+      color: #00a1d6;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .link-btn:hover {
+      background: none;
+      text-decoration: underline;
+    }
+    .collection-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #5a6b7b;
+      border-bottom: 1px solid #eef3f7;
+    }
+    .collection-toolbar label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .collection-toolbar input[type="checkbox"] {
+      margin: 0;
+      cursor: pointer;
+    }
+    .collection-list {
+      max-height: 190px;
+      overflow-y: auto;
+    }
+    .ci {
+      border-bottom: 1px solid #f2f6fa;
+    }
+    .ci-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ci-row:hover {
+      background: #f7fbfe;
+    }
+    .ci-row input[type="checkbox"] {
+      margin: 0;
+      flex: none;
+      cursor: pointer;
+    }
+    .ci-title {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ci-badge {
+      flex: none;
+      font-size: 11px;
+      color: #00a1d6;
+      background: #e9f6fc;
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .ci-cur {
+      flex: none;
+      font-size: 11px;
+      color: #f56c6c;
+    }
+    .ci-expand {
+      flex: none;
+      width: auto;
+      padding: 0 4px;
+      background: none;
+      color: #99a7b4;
+      font-size: 12px;
+    }
+    .ci-expand:hover {
+      background: none;
+      color: #00a1d6;
+    }
+    .ci-pages {
+      display: none;
+      background: #fafcfe;
+    }
+    .ci-pages.open {
+      display: block;
+    }
+    .ci-page {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px 5px 26px;
+      font-size: 12px;
+      color: #556;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ci-page:hover {
+      background: #f3f9fd;
+    }
+    .ci-page input[type="checkbox"] {
+      margin: 0;
+      flex: none;
+      cursor: pointer;
+    }
+    .ci-page .page-title {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ci-page .page-dur {
+      flex: none;
+      color: #9aa8b5;
+      font-size: 11px;
+    }
+    .collection-footer {
+      padding: 8px 10px;
+      border-top: 1px solid #eef3f7;
+    }
+    .export-mode {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #5a6b7b;
+    }
+    .export-mode label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .export-mode input[type="radio"] {
+      margin: 0;
+      cursor: pointer;
+    }
+    .collection-footer button {
+      width: 100%;
+    }
+    .collection-hint {
+      margin-bottom: 6px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #9aa8b5;
+    }
+    .collection-progress {
+      margin-top: 6px;
+      min-height: 15px;
+      font-size: 12px;
+      color: #0b5f85;
+    }
+    .collection-progress.error {
+      color: #c62828;
+    }
   </style>
 </head>
 <body>
@@ -141,6 +353,36 @@
     <select id="subtitleLanguage" disabled>
       <option value="-1">正在加载语言列表...</option>
     </select>
+  </div>
+
+  <!-- 合集批量下载（默认折叠，点「展开」才显示列表） -->
+  <div id="collectionSection" class="collection" style="display: none;">
+    <div class="collection-head">
+      <div class="head-left">
+        <span class="pod-icon">合集</span>
+        <span class="pod-name" id="collectionName">合集</span>
+        <span class="pod-amt" id="collectionAmt"></span>
+      </div>
+      <button class="link-btn" id="collectionToggleList" type="button">展开 ▾</button>
+    </div>
+    <div id="collectionBody" style="display: none;">
+      <div class="collection-toolbar" id="collectionToolbar">
+        <label><input type="checkbox" id="collectionSelectAll"> 全选</label>
+        <span id="collectionCount">已选 0 集</span>
+        <span id="collectionView"></span>
+      </div>
+      <div class="collection-list" id="collectionList"></div>
+      <div class="collection-footer">
+        <div class="export-mode">
+          <label><input type="radio" name="exportMode" id="exportFiles" value="files" checked> 每个单独 TXT</label>
+          <label><input type="radio" name="exportMode" id="exportZip" value="zip"> 打包为 ZIP</label>
+          <label><input type="radio" name="exportMode" id="exportSingle" value="single"> 合并为一个 TXT</label>
+        </div>
+        <div class="collection-hint">抓取期间请保持面板打开，完成后自动保存到下载目录</div>
+        <button id="downloadCollectionBtn" disabled>下载选中字幕</button>
+        <div class="collection-progress" id="collectionProgress"></div>
+      </div>
+    </div>
   </div>
   
   <!-- 字幕内容区域 -->

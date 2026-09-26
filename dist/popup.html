@@ -309,7 +309,8 @@
       gap: 4px;
       cursor: pointer;
     }
-    .export-mode input[type="radio"] {
+    .export-mode input[type="radio"],
+    .export-mode input[type="checkbox"] {
       margin: 0;
       cursor: pointer;
     }
@@ -374,9 +375,12 @@
       <div class="collection-list" id="collectionList"></div>
       <div class="collection-footer">
         <div class="export-mode">
-          <label><input type="radio" name="exportMode" id="exportFiles" value="files" checked> 每个单独 TXT</label>
+          <label><input type="radio" name="exportMode" id="exportFiles" value="files" checked> 单独 TXT</label>
           <label><input type="radio" name="exportMode" id="exportZip" value="zip"> 打包为 ZIP</label>
-          <label><input type="radio" name="exportMode" id="exportSingle" value="single"> 合并为一个 TXT</label>
+          <label><input type="radio" name="exportMode" id="exportSingle" value="single"> 合并 TXT</label>
+        </div>
+        <div class="export-mode" id="saveLayoutRow">
+          <label title="勾选后收进一个以合集名命名的文件夹"><input type="checkbox" id="layoutUnified"> 统一存放</label>
         </div>
         <div class="collection-hint">抓取期间请保持面板打开，完成后自动保存到下载目录</div>
         <button id="downloadCollectionBtn" disabled>下载选中字幕</button>

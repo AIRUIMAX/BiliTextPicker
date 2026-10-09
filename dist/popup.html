@@ -11,6 +11,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     .header {
+      position: relative;
       text-align: center;
       margin-bottom: 16px;
     }
@@ -18,6 +19,199 @@
       font-size: 16px;
       margin: 0;
       color: #00a1d6;
+    }
+
+    /* ===== 工具箱（右上角） ===== */
+    .toolbox-btn {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      flex: none;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border-radius: 6px;
+      background: none;
+      color: #7c8b99;
+      font-size: 17px;
+      line-height: 1;
+    }
+    .toolbox-btn:hover {
+      background: #eef3f7;
+      color: #00a1d6;
+    }
+    .toolbox-btn.active {
+      background: #e9f6fc;
+      color: #00a1d6;
+    }
+    .toolbox-panel {
+      position: absolute;
+      top: 26px;
+      right: -5px;
+      z-index: 20;
+      width: 258px;
+      padding: 6px 10px 4px;
+      border: 1px solid #e3e9ef;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(11, 95, 133, 0.16);
+      text-align: left;
+    }
+    .toolbox-head {
+      padding-bottom: 5px;
+      border-bottom: 1px solid #f2f6fa;
+      font-size: 12px;
+      font-weight: 600;
+      color: #5a6b7b;
+    }
+    .toolbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0;
+      cursor: pointer;
+    }
+    .toolbox-item + .toolbox-item {
+      border-top: 1px solid #f2f6fa;
+    }
+    .toolbox-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .toolbox-text b {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0b5f85;
+    }
+    .toolbox-desc {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #8695a3;
+    }
+    /* 开关 */
+    .switch {
+      position: relative;
+      flex: none;
+      display: inline-block;
+      width: 34px;
+      height: 18px;
+    }
+    .switch input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin: 0;
+      opacity: 0;
+    }
+    .switch-knob {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #cfd8dc;
+      border-radius: 9px;
+      transition: background 0.2s;
+    }
+    .switch-knob::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .switch input:checked + .switch-knob {
+      background: #00a1d6;
+    }
+    .switch input:checked + .switch-knob::before {
+      transform: translateX(16px);
+    }
+    /* 工具箱里的「动作型」区块（不是开关，是按钮） */
+    .toolbox-block {
+      padding: 8px 0 4px;
+      border-top: 1px solid #f2f6fa;
+    }
+    .toolbox-block-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .toolbox-block-head b {
+      flex: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0b5f85;
+    }
+    .toolbox-block-head .toolbox-desc {
+      margin-top: 0;
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .toolbox-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .toolbox-row select,
+    .toolbox-row input[type="number"] {
+      flex: 1;
+      min-width: 0;
+      padding: 5px 6px;
+      border: 1px solid #dbe3ea;
+      border-radius: 4px;
+      background: #fff;
+      font-size: 12px;
+      color: #333;
+    }
+    .mini-btn {
+      flex: none;
+      width: auto;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .mini-btn.stop {
+      background: #f56c6c;
+    }
+    .mini-btn.stop:hover {
+      background: #d94f4f;
+    }
+    /* 取值方式并排按钮（自定义 / 全部加载） */
+    .mode-btn {
+      flex: 1;
+      padding: 5px 8px;
+      border: 1px solid #dbe3ea;
+      border-radius: 4px;
+      background: #fff;
+      color: #4a5b6b;
+      font-size: 12px;
+    }
+    .mode-btn:hover {
+      background: #f4f9fd;
+      color: #00a1d6;
+      border-color: #a8dcf0;
+    }
+    .mode-btn.active {
+      background: #e9f6fc;
+      border-color: #7fcbe8;
+      color: #0b5f85;
+      font-weight: 600;
+    }
+    /* 用「自定义/全部」时，下拉框不是当前取值来源，压暗提示一下 */
+    .toolbox-row select.muted {
+      opacity: 0.55;
     }
     .status {
       padding: 12px;
@@ -337,8 +531,53 @@
 <body>
   <div class="header">
     <h1>B站字幕获取器</h1>
+    <button id="toolboxBtn" class="toolbox-btn" type="button" title="工具箱">⚙</button>
+
+    <!-- 工具箱：扩展附加功能的开关（默认都开启） -->
+    <div id="toolboxPanel" class="toolbox-panel" style="display: none;">
+      <div class="toolbox-head">工具箱</div>
+      <label class="toolbox-item">
+        <span class="toolbox-text">
+          <b>音量增强</b>
+          <span class="toolbox-desc" id="volumeBoostDesc">在播放器区域滚轮 / ↑↓ 调音量，最高 500%</span>
+        </span>
+        <span class="switch"><input type="checkbox" id="volumeBoostToggle"><span class="switch-knob"></span></span>
+      </label>
+      <label class="toolbox-item">
+        <span class="toolbox-text">
+          <b>控制栏亮白</b>
+          <span class="toolbox-desc" id="controlBarDesc">播放器控制栏文字与图标改为亮白色</span>
+        </span>
+        <span class="switch"><input type="checkbox" id="controlBarToggle"><span class="switch-knob"></span></span>
+      </label>
+
+      <!-- 评论区：一次加载到指定条数，省得手动往下滚 -->
+      <div class="toolbox-block">
+        <div class="toolbox-block-head">
+          <b>评论加载</b>
+          <span class="toolbox-desc" id="commentTotalHint">读取评论数…</span>
+        </div>
+        <div class="toolbox-row">
+          <select id="commentTarget">
+            <option value="100">加载 100 条</option>
+            <option value="200" selected>加载 200 条</option>
+            <option value="500">加载 500 条</option>
+            <option value="1000">加载 1000 条</option>
+          </select>
+          <button id="commentLoadBtn" class="mini-btn" type="button">开始</button>
+        </div>
+        <div class="toolbox-row">
+          <button id="commentCustomBtn" class="mode-btn" type="button">自定义</button>
+          <button id="commentAllBtn" class="mode-btn" type="button">全部加载</button>
+        </div>
+        <div class="toolbox-row" id="commentCustomRow" style="display: none;">
+          <input type="number" id="commentCustomTarget" min="1" max="2000" step="50" placeholder="输入条数（1~2000）">
+        </div>
+        <div class="toolbox-desc" id="commentStatus">自动加载评论，不用手动滚；加载中可在页面右下角停止</div>
+      </div>
+    </div>
   </div>
-  
+
   <div id="status" class="status">
     正在检测B站视频页面...
   </div>

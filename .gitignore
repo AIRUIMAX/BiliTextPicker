@@ -6,6 +6,9 @@
 /popup.html
 /manifest.json
 /assets/
+/video-downloader.js
+/vendor/
+/3.0.4_0/
 /DEBUGGING.md
 /test_multiple_pages.html
 /test_subtitles.json

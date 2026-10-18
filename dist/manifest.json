@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "B站字幕获取器",
-  "version": "1.7.0",
-  "description": "获取B站视频字幕并在页面上显示悬浮窗，支持合集批量下载",
+  "version": "1.8.0",
+  "description": "获取B站视频字幕并在页面上显示悬浮窗，支持合集批量下载；工具箱可一键下载当前视频",
   "permissions": [
     "activeTab",
     "scripting",
@@ -17,6 +17,17 @@
   "background": {
     "service_worker": "background.js"
   },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "video-downloader.js",
+        "vendor/ffmpeg/*"
+      ],
+      "matches": [
+        "https://*.bilibili.com/*"
+      ]
+    }
+  ],
   "content_scripts": [
     {
       "matches": [

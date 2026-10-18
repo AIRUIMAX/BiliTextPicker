@@ -91,6 +91,9 @@
       line-height: 1.35;
       color: #8695a3;
     }
+    .toolbox-desc.error {
+      color: #c62828;
+    }
     /* 开关 */
     .switch {
       position: relative;
@@ -187,6 +190,10 @@
     }
     .mini-btn.stop:hover {
       background: #d94f4f;
+    }
+    .mini-btn.block {
+      flex: 1;
+      width: 100%;
     }
     /* 取值方式并排按钮（自定义 / 全部加载） */
     .mode-btn {
@@ -574,6 +581,18 @@
           <input type="number" id="commentCustomTarget" min="1" max="2000" step="50" placeholder="输入条数（1~2000）">
         </div>
         <div class="toolbox-desc" id="commentStatus">自动加载评论，不用手动滚；加载中可在页面右下角停止</div>
+      </div>
+
+      <!-- 视频下载：固定走「高级模式 + 合并」，所以不提供任何选项 -->
+      <div class="toolbox-block">
+        <div class="toolbox-block-head">
+          <b>视频下载</b>
+          <span class="toolbox-desc" id="videoDownloadHint">音视频自动合并为 MP4</span>
+        </div>
+        <div class="toolbox-row">
+          <button id="videoDownloadBtn" class="mini-btn block" type="button">下载当前视频</button>
+        </div>
+        <div class="toolbox-desc" id="videoDownloadStatus">清晰度跟随播放器，进度显示在页面右下角</div>
       </div>
     </div>
   </div>

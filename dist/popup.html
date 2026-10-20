@@ -626,7 +626,7 @@
     </div>
     <div id="collectionBody" style="display: none;">
       <div class="collection-toolbar" id="collectionToolbar">
-        <label><input type="checkbox" id="collectionSelectAll"> 全选</label>
+        <label title="按住 Shift 点另一行，可以一次勾选这两行之间的全部"><input type="checkbox" id="collectionSelectAll"> 全选</label>
         <span id="collectionCount">已选 0 集</span>
         <span id="collectionView"></span>
       </div>
@@ -638,9 +638,9 @@
           <label><input type="radio" name="exportMode" id="exportSingle" value="single"> 合并 TXT</label>
         </div>
         <div class="export-mode" id="saveLayoutRow">
-          <label title="勾选后收进一个以合集名命名的文件夹"><input type="checkbox" id="layoutUnified"> 统一存放</label>
+          <label title="勾选后收进一个「日期 + 合集名」的文件夹，例如 1020期末速成课合集"><input type="checkbox" id="layoutUnified"> 统一存放</label>
         </div>
-        <div class="collection-hint">抓取期间请保持面板打开，完成后自动保存到下载目录</div>
+        <div class="collection-hint">按住 Shift 点另一行可一次勾选中间全部；抓取期间请保持面板打开</div>
         <button id="downloadCollectionBtn" disabled>下载选中字幕</button>
         <div class="collection-progress" id="collectionProgress"></div>
       </div>
